@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VanishVault Online</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">One-time secure share</p>
+          <h1>VanishVault</h1>
+        </div>
+        <a class="home-link" href="/">New share</a>
+      </header>
+
+      <section id="createView" class="panel hidden">
+        <div class="panel-title">
+          <p class="eyebrow">Create</p>
+          <h2>Lock a file</h2>
+        </div>
+
+        <label class="dropzone" for="fileInput">
+          <input id="fileInput" type="file" />
+          <span id="fileName">Choose file</span>
+        </label>
+
+        <div class="grid two">
+          <label>Password <input id="createPassword" type="password" autocomplete="off" /></label>
+          <label>Expire after <select id="expiryHours">
+            <option value="1">1 hour</option>
+            <option value="24" selected>24 hours</option>
+            <option value="168">7 days</option>
+            <option value="0">Never</option>
+          </select></label>
+        </div>
+
+        <label>Access <select id="accessMode">
+          <option value="either" selected>Preview or download once</option>
+          <option value="preview">Preview once</option>
+          <option value="download">Download once</option>
+        </select></label>
+
+        <button id="createBtn" class="primary">Create link</button>
+
+        <div id="createResult" class="result hidden">
+          <label>Share link <input id="shareUrl" readonly /></label>
+          <label>Dashboard <input id="dashboardUrl" readonly /></label>
+        </div>
+      </section>
+
+      <section id="openView" class="panel hidden">
+        <div class="panel-title">
+          <p class="eyebrow">Open</p>
+          <h2 id="openTitle">Secure file</h2>
+        </div>
+        <div id="openMeta" class="meta-row"></div>
+        <label>Password <input id="openPassword" type="password" autocomplete="off" /></label>
+        <div class="button-row">
+          <button id="previewBtn" class="primary">Preview once</button>
+          <button id="downloadBtn">Download once</button>
+        </div>
+        <div id="previewBox" class="preview-box hidden"></div>
+      </section>
+
+      <section id="dashboardView" class="panel hidden">
+        <div class="panel-title">
+          <p class="eyebrow">Dashboard</p>
+          <h2 id="dashTitle">Share status</h2>
+        </div>
+        <div id="dashStats" class="stats"></div>
+        <button id="revokeBtn" class="danger">Revoke access</button>
+        <div id="auditLog" class="audit"></div>
+      </section>
+
+      <p id="message" class="message"></p>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
